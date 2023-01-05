@@ -17,6 +17,9 @@ class ProjectItem extends StatelessWidget {
       case 1:
         type = 'Mobile Development';
         break;
+      case 2:
+        type = 'Web Development';
+        break;
       default:
     }
 
@@ -97,6 +100,9 @@ class ProjectItemMobile extends StatelessWidget {
       case 1:
         type = 'Mobile Development';
         break;
+      case 2:
+        type = 'Web Development';
+        break;
       default:
     }
 
@@ -122,11 +128,9 @@ class ProjectItemMobile extends StatelessWidget {
           children: [
             Container(
               height: 150,
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(
-                      projectModel.imageUrl!
-                    ),
+                    image: NetworkImage(projectModel.imageUrl!),
                     fit: BoxFit.cover),
                 borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(8),
