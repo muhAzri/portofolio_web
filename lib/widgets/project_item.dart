@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:portofolio_web/models/project_model.dart';
 
 import 'package:portofolio_web/shared/theme.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ProjectItem extends StatelessWidget {
-  const ProjectItem({super.key});
+  final ProjectModel projectModel;
+
+  const ProjectItem({super.key, required this.projectModel});
 
   @override
   Widget build(BuildContext context) {
+    late String type;
+
+    switch (projectModel.type) {
+      case 1:
+        type = 'Mobile Development';
+        break;
+      default:
+    }
+
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        launchUrlString(projectModel.projectUrl!);
+      },
       child: Container(
         width: 422,
         height: 460,
@@ -30,14 +45,14 @@ class ProjectItem extends StatelessWidget {
             Container(
               width: 422,
               height: 360,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(
-                      'assets/images/project.png',
+                    image: NetworkImage(
+                      projectModel.imageUrl!,
                     ),
                     fit: BoxFit.cover,
                   ),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(8),
                     bottomRight: Radius.circular(8),
                   )),
@@ -49,11 +64,11 @@ class ProjectItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Mobile Development',
+                    type,
                     style: orangeTextStyleUbuntu,
                   ),
                   Text(
-                    'Mulazamah TV Website',
+                    projectModel.title!,
                     style: purpleTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: bold,
@@ -70,12 +85,25 @@ class ProjectItem extends StatelessWidget {
 }
 
 class ProjectItemMobile extends StatelessWidget {
-  const ProjectItemMobile({super.key});
+  final ProjectModel projectModel;
+
+  const ProjectItemMobile({super.key, required this.projectModel});
 
   @override
   Widget build(BuildContext context) {
+    late String type;
+
+    switch (projectModel.type) {
+      case 1:
+        type = 'Mobile Development';
+        break;
+      default:
+    }
+
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        launchUrlString(projectModel.projectUrl!);
+      },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
@@ -94,13 +122,13 @@ class ProjectItemMobile extends StatelessWidget {
           children: [
             Container(
               height: 150,
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(
-                      'assets/images/project.png',
+                    image: NetworkImage(
+                      projectModel.imageUrl!
                     ),
                     fit: BoxFit.cover),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(8),
                   bottomRight: Radius.circular(8),
                 ),
@@ -113,14 +141,14 @@ class ProjectItemMobile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Mobile Development',
+                    type,
                     style: orangeTextStyleUbuntu,
                   ),
                   const SizedBox(
                     height: 6,
                   ),
                   Text(
-                    'Mulazamah TV Website',
+                    projectModel.title!,
                     style: purpleTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: bold,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:portofolio_web/widgets/project_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import '../bloc/project_bloc.dart';
 import '../shared/data.dart';
 import '../shared/theme.dart';
 import '../widgets/service_item.dart';
@@ -214,12 +216,25 @@ class MainMobilePage extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            Column(
-              children: const [
-                ProjectItemMobile(),
-                ProjectItemMobile(),
-                ProjectItemMobile(),
-              ],
+            BlocProvider(
+              create: (context) => ProjectBloc()..add(ProjectGet()),
+              child: BlocBuilder<ProjectBloc, ProjectState>(
+                builder: (context, state) {
+                  if (state is ProjectSuccess) {
+                    return Column(
+                      children: state.projects.map(
+                        (project) {
+                          return ProjectItemMobile(projectModel: project);
+                        },
+                      ).toList(),
+                    );
+                  }
+
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
             )
           ],
         ),

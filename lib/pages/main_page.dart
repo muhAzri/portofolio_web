@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portofolio_web/shared/data.dart';
 import 'package:portofolio_web/shared/theme.dart';
 import 'package:portofolio_web/widgets/navbar.dart';
@@ -6,6 +7,7 @@ import 'package:portofolio_web/widgets/service_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import '../bloc/project_bloc.dart';
 import '../widgets/buttons.dart';
 import '../widgets/project_item.dart';
 
@@ -236,16 +238,25 @@ class MainPage extends StatelessWidget {
               child: SingleChildScrollView(
                 controller: projectScrollController,
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: const [
-                    ProjectItem(),
-                    ProjectItem(),
-                    ProjectItem(),
-                    ProjectItem(),
-                    ProjectItem(),
-                    ProjectItem(),
-                    ProjectItem(),
-                  ],
+                child: BlocProvider(
+                  create: (context) => ProjectBloc()..add(ProjectGet()),
+                  child: BlocBuilder<ProjectBloc, ProjectState>(
+                    builder: (context, state) {
+                      if (state is ProjectSuccess) {
+                        return Row(
+                          children: state.projects.map(
+                            (project) {
+                              return ProjectItem(projectModel: project);
+                            },
+                          ).toList(),
+                        );
+                      }
+
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                  ),
                 ),
               ),
             )
