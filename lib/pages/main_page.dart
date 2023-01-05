@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portofolio_web/models/project_model.dart';
 import 'package:portofolio_web/shared/data.dart';
 import 'package:portofolio_web/shared/theme.dart';
 import 'package:portofolio_web/widgets/navbar.dart';
@@ -252,9 +253,31 @@ class MainPage extends StatelessWidget {
                         );
                       }
 
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      // return const Center(
+                      //   child: CircularProgressIndicator(),
+                      // );
+                      return Row(children: [
+                        ProjectItem(
+                          projectModel: ProjectModel(
+                            title: 'Todo app With Amplify AWS',
+                            type: 1,
+                            projectUrl:
+                                'https://github.com/muhAzri/todo_amplify_cubit',
+                            imageUrl:
+                                'https://i.ibb.co/nRHmBKp/Simulator-Screen-Shot-i-Phone-14-Pro-Max-2023-01-01-at-21-24-23.jpg',
+                          ),
+                        ),
+                        ProjectItem(
+                          projectModel: ProjectModel(
+                            title: 'Bank Sha E-Wallet App',
+                            type: 1,
+                            projectUrl:
+                                'https://github.com/muhAzri/bank_sha-Bloc-State-API-Consume',
+                            imageUrl:
+                                'https://i.ibb.co/C6L6nf0/Simulator-Screen-Shot-i-Phone-14-Pro-Max-2022-12-26-at-14-20-59.png',
+                          ),
+                        ),
+                      ]);
                     },
                   ),
                 ),

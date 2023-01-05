@@ -10,7 +10,6 @@ class ProjectService {
           Uri.parse('https://muhazri.pythonanywhere.com/api/projects/'),
           headers: {
             "Accept": "application/json",
-            "Access-Control-Allow-Origin": "*"
           });
 
       if (res.statusCode == 200) {
