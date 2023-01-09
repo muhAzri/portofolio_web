@@ -1,6 +1,6 @@
 class ProjectModel {
   final String? title;
-  final int? type;
+  final String? type;
   final String? projectUrl;
   final String? imageUrl;
 

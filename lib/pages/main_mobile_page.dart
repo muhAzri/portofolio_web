@@ -92,7 +92,7 @@ class MainMobilePage extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     launchUrlString(
-                      'https://drive.google.com/file/d/1aKkJ467umKOGhF3icYd1635B4oBK4YRS/view?usp=sharing',
+                      'https://drive.google.com/file/d/19xtudYcRvkwdBuq3Q4F-lGD9XkRvn3V-/view?usp=share_link',
                     );
                   },
                   child: Row(
@@ -231,31 +231,9 @@ class MainMobilePage extends StatelessWidget {
                     );
                   }
 
-                  // return const Center(
-                  //   child: CircularProgressIndicator(),
-                  // );
-                  return Row(children: [
-                    ProjectItemMobile(
-                      projectModel: ProjectModel(
-                        title: 'Todo app With Amplify AWS',
-                        type: 1,
-                        projectUrl:
-                            'https://github.com/muhAzri/todo_amplify_cubit',
-                        imageUrl:
-                            'https://i.ibb.co/nRHmBKp/Simulator-Screen-Shot-i-Phone-14-Pro-Max-2023-01-01-at-21-24-23.jpg',
-                      ),
-                    ),
-                    ProjectItemMobile(
-                      projectModel: ProjectModel(
-                        title: 'Bank Sha E-Wallet App',
-                        type: 1,
-                        projectUrl:
-                            'https://github.com/muhAzri/bank_sha-Bloc-State-API-Consume',
-                        imageUrl:
-                            'https://i.ibb.co/C6L6nf0/Simulator-Screen-Shot-i-Phone-14-Pro-Max-2022-12-26-at-14-20-59.png',
-                      ),
-                    ),
-                  ]);
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 },
               ),
             )

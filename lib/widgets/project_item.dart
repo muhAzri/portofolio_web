@@ -11,18 +11,6 @@ class ProjectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late String type;
-
-    switch (projectModel.type) {
-      case 1:
-        type = 'Mobile Development';
-        break;
-      case 2:
-        type = 'Web Development';
-        break;
-      default:
-    }
-
     return InkWell(
       onTap: () {
         launchUrlString(projectModel.projectUrl!);
@@ -67,7 +55,7 @@ class ProjectItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    type,
+                    projectModel.type!,
                     style: orangeTextStyleUbuntu,
                   ),
                   Text(
@@ -94,18 +82,6 @@ class ProjectItemMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late String type;
-
-    switch (projectModel.type) {
-      case 1:
-        type = 'Mobile Development';
-        break;
-      case 2:
-        type = 'Web Development';
-        break;
-      default:
-    }
-
     return GestureDetector(
       onTap: () {
         launchUrlString(projectModel.projectUrl!);
@@ -145,7 +121,7 @@ class ProjectItemMobile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    type,
+                    projectModel.type!,
                     style: orangeTextStyleUbuntu,
                   ),
                   const SizedBox(
