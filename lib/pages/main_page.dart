@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portofolio_web/models/project_model.dart';
 import 'package:portofolio_web/shared/data.dart';
 import 'package:portofolio_web/shared/theme.dart';
 import 'package:portofolio_web/widgets/navbar.dart';

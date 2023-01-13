@@ -6,7 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../bloc/project_bloc.dart';
-import '../models/project_model.dart';
 import '../shared/data.dart';
 import '../shared/theme.dart';
 import '../widgets/service_item.dart';
